@@ -35,6 +35,10 @@ app.config(function($routeProvider, FBCreds) {
     templateUrl: 'partials/new-pin.html',
     controller: 'NewPinCtrl'
   }).
+  when('/boards/pins/edit/:pinId', {
+    templateUrl: 'partials/edit-pin.html',
+    controller: 'EditPinCtrl'
+  }).
   otherwise('/boards');
 
 });

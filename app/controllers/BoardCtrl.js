@@ -1,10 +1,12 @@
 "use strict";
 
 app.controller("BoardCtrl", function($scope, BoardStorage, AuthFactory, $location) {
-
-  if(!AuthFactory.getUser()) {
-    $location.url("/login");
-  } 
+  
+  firebase.auth().onAuthStateChanged(function(){
+    console.log("HI");
+    // $location.url("/boards");
+    // $scope.$apply();
+  });
 
   BoardStorage.getBoards(AuthFactory.getUser())
   .then( function (boardCollection) {

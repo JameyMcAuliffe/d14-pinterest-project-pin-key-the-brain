@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("PinCtrl", function($scope, PinStorage, $routeParams) {
+app.controller("PinCtrl", function($scope, $location, PinStorage, $routeParams) {
 
   $scope.newPinId = $routeParams.boardId;
 
@@ -11,6 +11,11 @@ app.controller("PinCtrl", function($scope, PinStorage, $routeParams) {
       return pin.fb_b_key === $routeParams.boardId;
     });
   });  
+
+  $scope.editThisPin = function(pinId) {
+    $location.url(`/boards/pins/edit/:${pinId}`);
+    //go to a new page
+  }
 
   $scope.delete = function (id) {
     PinStorage.deletePin(id)
