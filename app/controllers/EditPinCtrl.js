@@ -12,15 +12,19 @@ app.controller("EditPinCtrl", function($scope, $routeParams, PinStorage, $locati
     })[0];
   });
 
+  $scope.editedPin = {
+    title: "",
+    url: "",
+    desc: ""
+  }
 
+  $scope.putEditPin = function() {
+    PinStorage.putPin($routeParams.pinId, $scope.editedPin)
+    .then(function(message) {
 
-  $scope.putPin = function() {
-    // PinStorage.putPin($scope.pinId)
-    // .then(function(message) {
-    //   console.log(message);
-    //   $location.url("/boards");
-    // })
-  console.log("pin", $scope.selectedPin);
+      console.log(message);
+      $location.url("/boards");
+    })
 
   };
 

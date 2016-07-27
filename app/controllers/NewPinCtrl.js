@@ -15,6 +15,4 @@ app.controller("NewPinCtrl", function($scope, $routeParams, PinStorage, $locatio
     })
   };
 
-  
-
 });

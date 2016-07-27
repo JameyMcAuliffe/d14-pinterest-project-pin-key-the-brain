@@ -21,19 +21,20 @@ app.factory("PinStorage", function(FirebaseURL, $q, $http) {
     });
   };
 
-  // let putPin = function(pinId) {
-  //   return $q(function(resolve, reject) {
-  //     $http.put(
-  //       `${FirebaseURL}/pin/${pinId}.json`,
-  //       )
-  //     .success(function(message) {
-  //       resolve(message);
-  //     })
-  //     .error(function(error) {
-  //       reject(error);
-  //     });
-  //   });
-  // };
+  let putPin = function(pinId, pinObj) {
+    return $q(function(resolve, reject) {
+      $http.patch(
+        `${FirebaseURL}/pin/${pinId}.json`,
+          JSON.stringify(pinObj)   
+      )
+      .success(function(message) {
+        resolve(message);
+      })
+      .error(function(error) {
+        reject(error);
+      });
+    });
+  };
 
   let postNewPin = function (newPin, boardId) {
     newPin.fb_b_key = boardId;
@@ -66,7 +67,7 @@ app.factory("PinStorage", function(FirebaseURL, $q, $http) {
   };
 
   return {
-    getPins, postNewPin, deletePin
+    getPins, postNewPin, deletePin, putPin
   };
 
 });

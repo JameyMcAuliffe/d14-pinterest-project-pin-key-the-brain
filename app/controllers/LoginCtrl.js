@@ -30,6 +30,16 @@ app.controller("LoginCtrl", function( $rootScope, $location, $scope, AuthFactory
   }
   // 
 
+  // AuthFactory.getUser()
+  // .then ( function() {
+  //   if (AuthFactory.currentUser) {
+  //     $location.path("/");
+
+  //   }
+    
+    
+  // });
+
 
 
 });
